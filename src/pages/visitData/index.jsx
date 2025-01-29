@@ -1,5 +1,5 @@
-import Input from "../../components/input/input"
-import Button from "../../components/button/button"
+import Input from "../../components/input"
+import Button from "../../components/button"
 import { NavLink } from "react-router"
 
 function VisitData() {

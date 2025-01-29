@@ -1,9 +1,6 @@
-import { Routes, Route } from 'react-router'
-import Home from './pages/home'
-import VisitData from './pages/visitData/visitData'
 import { VisitContext } from './context/visitContext'
 import { useState } from 'react'
-import Header from './components/header/header'
+import AppRoutes from './routes'
 
 function App() {
   const [visitInfo, setVisitInfo] = useState([])
@@ -11,12 +8,7 @@ function App() {
 
   return (
     <VisitContext.Provider value={{ visitInfo, setVisitInfo, inputFields, setInputFields }}>
-      <Routes>
-        <Route element={<Header/>}>
-          <Route index element={<Home/>}/>
-          <Route path='/visitData' element={<VisitData/>}/>
-        </Route>
-      </Routes>
+      <AppRoutes/>
     </VisitContext.Provider>
   )
 }
