@@ -1,8 +1,10 @@
-function VisitData() {
+import Input from "../../components/input/input"
 
+function VisitData() {
   return (
     <div>
-      funcinou!
+      <Input inputType = "text"/>
+      <Input inputType = "date"/>
     </div>
   )
 }

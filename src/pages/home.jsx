@@ -1,12 +1,8 @@
-import Input from '../components/input/input'
+import Button from "../components/button/button"
 
 function Home() {
-
   return (
-    <div>
-      <Input inputType = "text"/>
-      <Input inputType = "date"/>
-    </div>
+    <Button title="Adicionar nova visita"/>
   )
 }
 
