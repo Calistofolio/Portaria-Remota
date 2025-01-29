@@ -2,16 +2,18 @@ import { Routes, Route } from 'react-router'
 import Home from './pages/home'
 import VisitData from './pages/visitData/visitData'
 import { VisitContext } from './context/visitContext'
+import { useState } from 'react'
 
 function App() {
+  const [visitInfo, setVisitInfo] = useState([])
 
   return (
-    // <VisitContext>
+    <VisitContext.Provider value={{ visitInfo, setVisitInfo }}>
       <Routes>
         <Route index element={<Home/>}/>
         <Route path='/visitData' element={<VisitData/>}/>
       </Routes>
-    // </VisitContext>
+    </VisitContext.Provider>
   )
 }
 
