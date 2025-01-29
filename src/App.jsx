@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import Input from './components/input/input'
+import { Routes, Route } from 'react-router'
+import Home from './pages/home'
+import VisitData from './pages/visitData/visitData'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <Input inputType = "text"/>
-      <Input inputType = "date"/>
-    </div>
+    <Routes>
+      <Route index element={<Home/>}/>
+      <Route path='/visitData' element={<VisitData/>}/>
+    </Routes>
   )
 }
 
