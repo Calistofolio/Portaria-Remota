@@ -7,9 +7,10 @@ import Header from './components/header/header'
 
 function App() {
   const [visitInfo, setVisitInfo] = useState([])
+  const [inputFields, setInputFields] = useState([])
 
   return (
-    <VisitContext.Provider value={{ visitInfo, setVisitInfo }}>
+    <VisitContext.Provider value={{ visitInfo, setVisitInfo, inputFields, setInputFields }}>
       <Routes>
         <Route element={<Header/>}>
           <Route index element={<Home/>}/>
