@@ -4,10 +4,9 @@ import AppRoutes from './routes'
 
 function App() {
   const [visitInfo, setVisitInfo] = useState([])
-  const [inputFields, setInputFields] = useState([])
 
   return (
-    <VisitContext.Provider value={{ visitInfo, setVisitInfo, inputFields, setInputFields }}>
+    <VisitContext.Provider value={{ visitInfo, setVisitInfo }}>
       <AppRoutes/>
     </VisitContext.Provider>
   )

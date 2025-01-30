@@ -11,7 +11,7 @@ function AppRoutes() {
         <Route element={<Header/>}>
             <Route element={<Footer/>}>
                 <Route index element={<Home/>}/>
-                <Route path='/visitData' element={<VisitData/>}/>
+                <Route path='/visitData/:id' element={<VisitData/>}/>
             </Route>
         </Route>
       </Routes>

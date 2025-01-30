@@ -1,11 +1,18 @@
 import Button from "../../components/button"
 import { NavLink } from "react-router"
+import { useContext } from "react"
+import { VisitContext } from "../../context/visitContext"
 
 function Home() {
+  const {visitInfo} = useContext(VisitContext)
   return (
-    <NavLink to="/visitData">
-        <Button title="Adicionar nova visita"/>
-    </NavLink>
+    <div>
+      
+      <NavLink to="/visitData/setVisit">
+          <Button title="Adicionar nova visita"/>
+      </NavLink>
+      {visitInfo.map((c, i) => <div> {c.name} {c.date} <NavLink to={"/visitData/" + i}>Edit</NavLink></div>)}
+    </div>
   )
 }
 
