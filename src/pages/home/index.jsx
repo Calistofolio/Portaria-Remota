@@ -11,7 +11,7 @@ function Home() {
       <NavLink to="/visitData/setVisit">
           <Button title="Adicionar nova visita"/>
       </NavLink>
-      {visitInfo.map((c, i) => <div> {c.name} {c.date} <NavLink to={"/visitData/" + i}>Edit</NavLink></div>)}
+      {visitInfo.map((c, i) => <div key={i}> {c.name} {c.date} <NavLink to={"/visitData/" + i}>Edit</NavLink></div>)}
     </div>
   )
 }

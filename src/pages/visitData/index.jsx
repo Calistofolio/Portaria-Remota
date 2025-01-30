@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router"
 import { useContext } from "react"
 import { VisitContext } from "../../context/visitContext"
 
+
 function VisitData() {
   const { visitInfo, setVisitInfo } = useContext(VisitContext)
   const params = useParams();
@@ -18,8 +19,13 @@ function VisitData() {
     const docNum = document.getElementById("docNum")
     const obs = document.getElementById("obs")
     const status = document.getElementById("status")
+    const thisDate = new Date().getTime()
+    
+    
     if (visitInfo == null) {
-      setVisitInfo({name: name.value, date: date.value})
+      setVisitInfo({name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value})
+    } else if(thisDate > date.valueAsDate.getTime()){
+      console.log("Não é possivel definir uma visita e")
     } else{
       setVisitInfo([...visitInfo, {name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value}])
     }
@@ -31,19 +37,17 @@ function VisitData() {
         <Button title="Voltar"/>
       </NavLink>
       <form action="/" onSubmit={handleClick}>
-        <Input {...(params.id != "setVisit" ? {value: visitInfo[params.id].name} : {value : null})}
-          inputType = "text" iId="name"/>
-        <Input {...(params.id != "setVisit" ? {value: visitInfo[params.id].date} : {value : null})} inputType = "date" iId="date"/>
-        <Input {...(params.id != "setVisit" ? {value: visitInfo[params.id].hour} : {value : null})} inputType = "text" iId="hour"/>
-        <Input {...(params.id != "setVisit" ? {value: visitInfo[params.id].docType} : {value : null})} inputType = "text"  iId="docType"/>
-        <Input {...(params.id != "setVisit" ? {value: visitInfo[params.id].docNum} : {value : null})} inputType = "text" iId="docNum"/>
-        <Input {...(params.id != "setVisit" ? {value: visitInfo[params.id].obs} : {value : null})} inputType = "text" iId="obs"/>
+        <Input req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].name} : {value : null})} inputType = "text" iId="name"/>
+        <Input req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].date} : {value : null})} inputType = "date" iId="date"/>
+        <Input req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].hour} : {value : null})} inputType = "text" iId="hour"/>
+        <Input req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].docType} : {value : null})} inputType = "text"  iId="docType"/>
+        <Input req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].docNum} : {value : null})} inputType = "text" iId="docNum"/>
+        <Input  {...(params.id != "setVisit" ? {value: visitInfo[params.id].obs} : {value : null})} inputType = "text" iId="obs"/>
       <NavLink to="/">
         <Button title="Voltar"/>
       </NavLink>
       <Button bType = "submit" title="Salvar"/>
       </form>
-      {params.id}
     </div>
   )
 }
