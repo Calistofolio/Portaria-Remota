@@ -3,6 +3,9 @@
 :root{
   --blue-900: #233876;
   --blue-700: #1A56DB;
+  --gray-200: #E5E7EB;
+  --gray-800: #1F2A37;
+  --cool-gray-500: #6B7280;
 }
 
 * {
@@ -10,4 +13,13 @@
   font-family: Inter, sans-serif;
   margin: 0px;
   padding: 0px;
+}
+
+NavLink{
+  color: inherit;
+  text-decoration: inherit;
+}
+
+li, ul{
+  text-decoration: inherit;
 }

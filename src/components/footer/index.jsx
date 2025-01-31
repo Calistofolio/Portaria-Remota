@@ -5,7 +5,7 @@ import { FaDribbble } from "react-icons/fa"
 function Footer() {
 
     return (
-        <div >
+        <div>
             <Outlet/>
             <footer className={style.footer}>
                 <div>

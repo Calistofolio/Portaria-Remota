@@ -1,0 +1,12 @@
+.button{
+    background-color: white;
+    border: solid 1px var(--gray-200);
+    color: var(--gray-800);
+    padding: 8px 12px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    text-decoration: none;
+}
