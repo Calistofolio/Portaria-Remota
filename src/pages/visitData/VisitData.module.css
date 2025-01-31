@@ -1,0 +1,47 @@
+.position{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    padding: 15px;
+    margin: 100px;
+}
+.modal{
+    display: none;
+}
+
+form *{
+    padding: 5px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.title{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.button{
+    flex-direction: row;
+    display: flex;
+}
+.button *{
+    padding: 10px 20px;
+}
+
+.save *{
+    background-color: var(--blue-700);
+    color: white;
+}
+.red *{
+    background-color: var(--red-700);
+    color: white;
+}
+
+.content{
+    padding: 20px;
+}

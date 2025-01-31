@@ -1,0 +1,11 @@
+.card{
+    z-index: 5;
+    background-color: white;
+    border-radius: 16px;
+    margin-top: 30px;
+    padding: 0;
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.10);
+}
+.relative{
+    position: relative;
+}
