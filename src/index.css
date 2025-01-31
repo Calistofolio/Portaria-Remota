@@ -7,12 +7,15 @@
   --gray-800: #1F2A37;
   --cool-gray-500: #6B7280;
   --cool-gray-050: #F9FAFB;
+  --gray-300: #D1D5DB;
   --green-600: #057A55;
   --blue-800: #1E429F;
   --blue-100: #E1EFFE;
   --red-800: #9B1C1C;
+  --red-700: #C81E1E;
   --red-200: #FBD5D5;
 }
+
 
 * {
   box-sizing: border-box;

@@ -1,0 +1,8 @@
+.apt{
+    border-top: solid 2px var(--gray-300) ;
+    padding: 20px;
+    color: var(--gray-500);
+}
+.logo{
+    padding: 20px;
+}

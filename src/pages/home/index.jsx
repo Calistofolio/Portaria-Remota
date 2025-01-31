@@ -8,17 +8,23 @@ import VisitsTable from "../../components/visitsTable/visitsTable"
 function Home() {
   return (
     <div className={style.relative}>
-      <AptInfo/>
+      
       <div className={style.position}>
-        
-        <MainCard class="card">
+        <div className={style.aptCard}>
+          <AptInfo/>
+        </div>
+        <MainCard>
+          <div className={style.content}>
           <div className={style.title}>
             <h2>Gerencie suas visitas</h2>
+            <div className={style.button}>
             <NavLink to="/visitData/setVisit">
-              <Button className={style.addVisit} title="Adicionar nova visita"/>
+              <Button title="Adicionar nova visita"/>
             </NavLink>
+            </div>
           </div>
           <VisitsTable/>
+          </div>
         </MainCard>
       </div>
       </div>

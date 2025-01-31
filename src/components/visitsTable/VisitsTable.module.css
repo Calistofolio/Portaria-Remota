@@ -1,3 +1,22 @@
 .head{
     background-color: var(--cool-gray-050);
 }
+.thead *{
+    margin: 2px;
+    padding: 16px;
+    color: var(--cool-gray-500);
+    text-align: left;
+}
+
+.tbody td{
+    margin: 2px;
+    padding: 22px;
+}
+
+table{
+    width: 100%;
+}
+
+.colorFont{
+    color: var(--cool-gray-500);
+}

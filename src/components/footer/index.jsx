@@ -7,6 +7,7 @@ function Footer() {
     return (
         <div>
             <Outlet/>
+            <div className={style.relative}>
             <footer className={style.footer}>
                 <div>
                     © 2025 Accenture. All rights reserved.
@@ -16,6 +17,7 @@ function Footer() {
                     <FaDribbble/>
                 </div>
             </footer>
+            </div>
         </div>
     )
   }

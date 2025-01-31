@@ -11,23 +11,23 @@ function VisitsTable() {
     return (
         <table>
             <thead className={style.head}>
-                <tr>
+                <tr className={style.thead}>
                     <th>Visitante</th>
                     <th>Data</th>
                     <th>Hora</th>
-                    <th></th>
-                    <th></th>
+                    <th colSpan={2}> </th>
+                    <th colSpan={2}> </th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
             {visitInfo.map((c, i) =>
-                <tr key={i}> 
+                <tr key={i} className={style.tbody}> 
                     <td> {c.name} </td> 
-                    <td>{c.date} </td>
-                    <td> {c.hour}</td> 
-                    <td> {c.status == true ? <NavLink to={"/visitData/" + i}><Button title="Editar"/></NavLink> : " "}</td>
-                    <td> {c.status == true ? <NavLink to={"/visitData/" + i}><Button title="Cancelar visita"/></NavLink> : " "}</td>
+                    <td className={style.colorFont}>{c.date} </td>
+                    <td className={style.colorFont}> {c.hour}</td> 
+                    <td colSpan={2}> {c.status == true ? <NavLink to={"/visitData/" + i}><Button title="Editar"/></NavLink> : " "}</td>
+                    <td colSpan={2}> {c.status == true ? <NavLink to={"/visitData/" + i}><Button title="Cancelar visita"/></NavLink> : " "}</td>
                     <td> <VisitStatus visit={c.status}/></td>
                 </tr>)}
             </tbody>

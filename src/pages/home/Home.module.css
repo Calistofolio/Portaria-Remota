@@ -1,11 +1,8 @@
 .position{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    
-}
-
-.addVisit{
-    background-color: var(--blue-900);
+    margin: 100px;
 }
 
 .relative{
@@ -14,4 +11,16 @@
 
 .title{ display: flex;
     justify-content: space-between;
+}
+
+.aptCard{
+    width: 350px;
+}
+
+.button *{
+    background-color: var(--blue-900);
+    color: white;
+}
+.content{
+    padding: 20px;
 }
