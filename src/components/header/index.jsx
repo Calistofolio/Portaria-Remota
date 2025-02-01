@@ -1,4 +1,3 @@
-import { Outlet } from "react-router"
 import Logo from "../../assets/logo.png"
 import Avatar from "../../assets/Avatar.png"
 import Button from "../button"
@@ -27,7 +26,6 @@ function Header() {
                 </div>
             </div>
             <img src={Family} className={style.family}  alt="" />
-            <Outlet/>
         </div>
     )
   }
