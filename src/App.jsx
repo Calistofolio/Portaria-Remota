@@ -1,14 +1,12 @@
-import { VisitContext } from './context/visitContext'
-import { useState } from 'react'
+import { VisitProvider } from './context/visitContext'
 import AppRoutes from './routes'
 
 function App() {
-  const [visitInfo, setVisitInfo] = useState([])
 
   return (
-    <VisitContext.Provider value={{ visitInfo, setVisitInfo }}>
+    <VisitProvider>
       <AppRoutes/>
-    </VisitContext.Provider>
+    </VisitProvider>
   )
 }
 
