@@ -8,7 +8,7 @@ import style from "./VisitData.module.css"
 
 
 function VisitData() {
-  const { visitInfo, setVisitInfo } = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, cancelVisit} = useContext(VisitContext)
   const params = useParams();
   const navigate = useNavigate();
   
@@ -39,17 +39,6 @@ function VisitData() {
     }
   }
 
-  function cancelVisit(){
-    const name = document.getElementById("name")
-    const date = document.getElementById("date")
-    const hour = document.getElementById("hour")
-    const docType = document.getElementById("docType")
-    const docNum = document.getElementById("docNum")
-    const obs = document.getElementById("obs")
-    const status = false
-    setVisitInfo(visit => visit.map((visit, i) => i == params.id ? {name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value, obs: obs.value, status: status} : visit));
-    navigate("/")
-  }
 
   return (
     
@@ -79,7 +68,7 @@ function VisitData() {
           </div>
         </div>
       </form>
-      {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelVisit()} title="Cancelar visita"/> </div> : "" }
+      {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelVisit(params.id)} title="Cancelar visita"/> </div> : "" }
         </div>
       </MainCard>
     </div>
