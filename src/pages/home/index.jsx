@@ -3,7 +3,7 @@ import { NavLink } from "react-router"
 import MainCard from "../../components/main-card"
 import AptInfo from "../../components/apt-info"
 import style from "./Home.module.css"
-import VisitsTable from "../../components/visitsTable/visitsTable"
+import VisitsTable from "../../components/visitsTable"
 
 function Home() {
   return (

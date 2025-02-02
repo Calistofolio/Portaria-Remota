@@ -1,4 +1,4 @@
-import { VisitProvider } from './context/visitContext'
+import { VisitProvider } from './context'
 import AppRoutes from './routes'
 
 function App() {

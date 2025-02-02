@@ -1,12 +1,11 @@
 import { useContext } from "react"
-import { VisitContext } from "../../context/visitContext"
-import { NavLink } from "react-router"
+import { VisitContext } from "../../context"
 import style from "./VisitsTable.module.css"
-import Button from "../../components/button"
+import Button from "../button"
 import VisitStatus from "../visit-status"
 
 function VisitsTable() {
-    const {visitInfo} = useContext(VisitContext)
+    const {visitInfo, cancelVisit, nav} = useContext(VisitContext)
 
     return (
         <table>
@@ -26,8 +25,8 @@ function VisitsTable() {
                     <td> {c.name} </td> 
                     <td className={style.colorFont}>{c.date} </td>
                     <td className={style.colorFont}> {c.hour}</td> 
-                    <td colSpan={2}> {c.status == true ? <NavLink to={"/visitData/" + i}><Button title="Editar"/></NavLink> : " "}</td>
-                    <td colSpan={2}> {c.status == true ? <NavLink to={"/visitData/" + i}><Button title="Cancelar visita"/></NavLink> : " "}</td>
+                    <td colSpan={2}> {c.status == true ? <Button onclick = {() => nav("/visitData/" + i)} title="Editar"/> : " "}</td>
+                    <td colSpan={2}> {c.status == true ? <Button onclick = {() => cancelVisit(i)} title="Cancelar visita"/> : " "}</td>
                     <td> <VisitStatus visit={c.status}/></td>
                 </tr>)}
             </tbody>

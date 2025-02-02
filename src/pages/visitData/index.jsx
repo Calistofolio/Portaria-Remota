@@ -2,13 +2,13 @@ import Input from "../../components/input"
 import Button from "../../components/button"
 import { NavLink, useNavigate, useParams } from "react-router"
 import { useContext } from "react"
-import { VisitContext } from "../../context/visitContext"
+import { VisitContext } from "../../context"
 import MainCard from "../../components/main-card"
 import style from "./VisitData.module.css"
 
 
 function VisitData() {
-  const { visitInfo, setVisitInfo, cancelVisit} = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, cancelVisit, nav } = useContext(VisitContext)
   const params = useParams();
   const navigate = useNavigate();
   
@@ -43,9 +43,9 @@ function VisitData() {
   return (
     
     <div className={style.position}>
-       <NavLink to="/">
-        <Button title="Voltar"/>
-      </NavLink>
+      <div>
+        <Button onclick={() => nav()} title="Voltar"/>
+        </div>
       <MainCard>
         <div className={style.content}>
       <div className={style.title}>
@@ -60,9 +60,9 @@ function VisitData() {
         <Input label="Observação (Opcional)" place="Digite a observação"  {...(params.id != "setVisit" ? {value: visitInfo[params.id].obs} : {value : null})} inputType = "text" iId="obs"/>
       
       <div className={style.button}>
-        <NavLink to="/">
-          <Button title="Voltar"/>
-        </NavLink>
+        <div>
+          <Button onclick={() => nav()} title="Voltar"/>
+          </div>
           <div className={style.save}>
             <Button  bType = "submit" title="Salvar"/>
           </div>

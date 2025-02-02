@@ -13,8 +13,12 @@ function VisitProvider({children}){
         navigate("/")
       }
 
+      function nav(path){
+        path == null ? navigate("/") : navigate(path);
+      }
+
     return(
-        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit }}>
+        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav }}>
             {children}
         </VisitContext.Provider>
     )
