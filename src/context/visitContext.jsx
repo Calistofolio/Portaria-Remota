@@ -7,6 +7,7 @@ const VisitContext = createContext();
 function VisitProvider({children}){
     const navigate = useNavigate();
     const [visitInfo, setVisitInfo] = useState([])
+    
     function cancelVisit(visitId){
         visitInfo.map((p, i) => i == visitId ? p.status = false : p.status = p.status)
         navigate("/")
