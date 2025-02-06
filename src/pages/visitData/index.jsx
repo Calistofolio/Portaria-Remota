@@ -1,6 +1,6 @@
 import Input from "../../components/input"
 import Button from "../../components/button"
-import { NavLink, useNavigate, useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { useContext } from "react"
 import { VisitContext } from "../../context"
 import MainCard from "../../components/main-card"

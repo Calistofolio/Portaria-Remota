@@ -3,11 +3,13 @@ import { VisitContext } from "../../context"
 import style from "./VisitsTable.module.css"
 import Button from "../button"
 import VisitStatus from "../visit-status"
+import CancelModal from "../cancel-modal"
 
 function VisitsTable() {
     const {visitInfo, cancelVisit, nav} = useContext(VisitContext)
 
     return (
+        <div>
         <table>
             <thead className={style.head}>
                 <tr className={style.thead}>
@@ -31,6 +33,7 @@ function VisitsTable() {
                 </tr>)}
             </tbody>
           </table>
+          </div>
         )
     }
 

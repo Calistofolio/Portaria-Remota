@@ -1,11 +1,11 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { useState, useRef, createContext } from "react";
 import { useNavigate } from "react-router";
 
 const VisitContext = createContext();
 
 function VisitProvider({children}){
     const navigate = useNavigate();
+    const dialogRef = useRef()
     const [visitInfo, setVisitInfo] = useState([])
     
     function cancelVisit(visitId){
@@ -18,7 +18,7 @@ function VisitProvider({children}){
       }
 
     return(
-        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav }}>
+        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav, dialogRef }}>
             {children}
         </VisitContext.Provider>
     )

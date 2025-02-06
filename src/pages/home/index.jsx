@@ -7,7 +7,8 @@ import { useContext } from "react"
 import { VisitContext } from "../../context"
 
 function Home() {
-  const {nav} = useContext(VisitContext)
+  const {nav, dialogRef} = useContext(VisitContext)
+  
   return (
     <div className={style.relative}>
       
@@ -24,6 +25,7 @@ function Home() {
             </div>
           </div>
           <VisitsTable/>
+          <Button onclick = {() => dialogRef.current.showModal()}/>
           </div>
         </MainCard>
       </div>
