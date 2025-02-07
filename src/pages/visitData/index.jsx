@@ -1,16 +1,21 @@
 import Input from "../../components/input"
 import Button from "../../components/button"
 import { useNavigate, useParams } from "react-router"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { VisitContext } from "../../context"
 import MainCard from "../../components/main-card"
 import style from "./VisitData.module.css"
+import CancelModal from "../../components/cancel-modal"
 
 
 function VisitData() {
-  const { visitInfo, setVisitInfo, cancelVisit, nav } = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, nav, cancelRef, setIndex } = useContext(VisitContext)
   const params = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIndex(params.id)
+  }),[]
   
 
   function handleClick(e){
@@ -68,8 +73,9 @@ function VisitData() {
           </div>
         </div>
       </form>
-      {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelVisit(params.id)} title="Cancelar visita"/> </div> : "" }
+      {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelRef.current.showModal()} title="Cancelar visita"/> </div> : "" }
         </div>
+        <CancelModal/>
       </MainCard>
     </div>
   

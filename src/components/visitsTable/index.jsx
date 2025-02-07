@@ -3,10 +3,10 @@ import { VisitContext } from "../../context"
 import style from "./VisitsTable.module.css"
 import Button from "../button"
 import VisitStatus from "../visit-status"
-import CancelModal from "../cancel-modal"
+
 
 function VisitsTable() {
-    const {visitInfo, cancelVisit, nav} = useContext(VisitContext)
+    const {visitInfo, nav, cancelRef, setIndex} = useContext(VisitContext)
 
     return (
         <div>
@@ -28,7 +28,9 @@ function VisitsTable() {
                     <td className={style.colorFont}>{c.date} </td>
                     <td className={style.colorFont}> {c.hour}</td> 
                     <td colSpan={2}> {c.status == true ? <Button onclick = {() => nav("/visitData/" + i)} title="Editar"/> : " "}</td>
-                    <td colSpan={2}> {c.status == true ? <Button onclick = {() => cancelVisit(i)} title="Cancelar visita"/> : " "}</td>
+                    <td colSpan={2}> {c.status == true ? <Button onclick={() => { 
+                        setIndex(i)
+                        cancelRef.current.showModal()}} title="Cancelar visita"/> : " "}</td>
                     <td> <VisitStatus visit={c.status}/></td>
                 </tr>)}
             </tbody>

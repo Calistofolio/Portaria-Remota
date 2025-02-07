@@ -6,10 +6,13 @@ const VisitContext = createContext();
 function VisitProvider({children}){
     const navigate = useNavigate();
     const dialogRef = useRef()
+    const cancelRef = useRef()
     const [visitInfo, setVisitInfo] = useState([])
+    const [index, setIndex] = useState()
     
-    function cancelVisit(visitId){
-        visitInfo.map((p, i) => i == visitId ? p.status = false : p.status = p.status)
+    function cancelVisit(){
+        visitInfo.map((p, i) => i == index ? p.status = false : p.status = p.status)
+        cancelRef.current.close()
         navigate("/")
       }
 
@@ -18,7 +21,7 @@ function VisitProvider({children}){
       }
 
     return(
-        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav, dialogRef }}>
+        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav, dialogRef, cancelRef, index, setIndex }}>
             {children}
         </VisitContext.Provider>
     )
