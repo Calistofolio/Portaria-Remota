@@ -1,10 +1,8 @@
 import { useContext } from "react"
 import { VisitContext } from "../../context"
 import Button from "../button"
-import { useParams } from "react-router"
 
 function CancelModal(props) {
-    const params = useParams();
 
     const {cancelVisit, cancelRef} = useContext(VisitContext)
 
