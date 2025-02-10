@@ -20,17 +20,21 @@ function VisitData() {
     status: true,
     obs: "",
   })
-  
 
   useEffect(() => {
     setIndex(params.id)
     if(params.id != "setVisit"){
       setThisVisit(visitInfo[params.id])
     }
-  }),[]
+  },[])
+
+  function handleInputChange(propName, propValue) {
+    setThisVisit({ ...thisVisit, [propName]: propValue });
+  }
 
   function handleClick(e){
     e.preventDefault();
+    console.log(thisVisit)
     const thisDate = new Date()
     
     
@@ -58,12 +62,12 @@ function VisitData() {
         {params.id == "setVisit" ? <h2>Adicionar visita</h2> : <h2>Editar visita</h2> }
     </div>
       <form onSubmit={handleClick}>
-        <Input label="Nome do visitante" onchange={(e) => thisVisit.name = e.target.value} inputValue={thisVisit.name} place="Digite o nome do visitante" req={true}  inputType = "text" />
-        <Input label="Data" place="Selecione a data" onchange={(e) => thisVisit.date = e.target.value} inputValue={thisVisit.date} req={true} inputType = "date" iId="date"/>
-        <Input label="Hora" place="Digite a hora" onchange={(e) => thisVisit.hour = e.target.value} inputValue={thisVisit.hour} req={true} inputType = "time" iId="hour"/>
-        <Input label="Tipo de documento" place="Digite o tipo de documento" onchange={(e) => thisVisit.docType = e.target.value} inputValue={thisVisit.docType} req={true} inputType = "text" />
-        <Input  label="Número do documento" place="Digite o número do documento" onchange={(e) => thisVisit.docNum = e.target.value} inputValue={thisVisit.docNum} req={true} inputType = "number"/>
-        <Input label="Observação (Opcional)" place="Digite a observação" onchange={(e) => thisVisit.obs = e.target.value} inputValue={thisVisit.obs} inputType = "text"/>
+        <Input label="Nome do visitante" onchange={(e) => handleInputChange("name", e.target.value)} inputValue={thisVisit.name} place="Digite o nome do visitante" req={true}  inputType = "text" />
+        <Input label="Data" place="Selecione a data" onchange={(e) => handleInputChange("date", e.target.value)} inputValue={thisVisit.date} req={true} inputType = "date" iId="date"/>
+        <Input label="Hora" place="Digite a hora" onchange={(e) => handleInputChange("hour", e.target.value)} inputValue={thisVisit.hour} req={true} inputType = "time" iId="hour"/>
+        <Input label="Tipo de documento" place="Digite o tipo de documento" onchange={(e) => handleInputChange("docType", e.target.value)} inputValue={thisVisit.docType} req={true} inputType = "text" />
+        <Input label="Número do documento" place="Digite o número do documento" onchange={(e) => handleInputChange("docNum", e.target.value)} inputValue={thisVisit.docNum} req={true} inputType = "number"/>
+        <Input label="Observação (Opcional)" place="Digite a observação" onchange={(e) => handleInputChange("obs", e.target.value)} inputValue={thisVisit.obs} inputType = "text"/>
       
       <div className={style.button}>
         <div>
