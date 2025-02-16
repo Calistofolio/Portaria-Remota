@@ -10,7 +10,7 @@ import CancelModal from "../../components/cancel-modal"
 
 function VisitData() {
   const params = useParams();
-  const { visitInfo, setVisitInfo, nav, cancelRef, setIndex } = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, nav, cancelRef, setIndex, dialogRef } = useContext(VisitContext)
   const [thisVisit, setThisVisit] = useState({
     name: "",
     date: "",
@@ -28,6 +28,7 @@ function VisitData() {
     }
   },[])
 
+
   function handleInputChange(propName, propValue) {
     setThisVisit({ ...thisVisit, [propName]: propValue });
   }
@@ -36,7 +37,6 @@ function VisitData() {
     e.preventDefault();
     console.log(thisVisit)
     const thisDate = new Date()
-    
     
     if (visitInfo == null) {
       setVisitInfo(thisVisit)
