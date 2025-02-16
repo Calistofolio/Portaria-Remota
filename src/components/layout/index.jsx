@@ -4,6 +4,7 @@ import FeedbackMessage from "../feedback-message"
 import { Outlet } from "react-router"
 import { useContext, useEffect } from "react"
 import { VisitContext } from "../../context"
+import CancelModal from "../cancel-modal"
 
 function Layout() {
     const { visitInfo, dialogRef } = useContext(VisitContext)
@@ -20,6 +21,7 @@ function Layout() {
         <div>
             <Header/>
             <Outlet/>
+            <CancelModal/>
             <FeedbackMessage/>
            <Footer/>
         </div>
