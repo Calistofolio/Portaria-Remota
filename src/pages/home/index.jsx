@@ -5,10 +5,9 @@ import style from "./Home.module.css"
 import VisitsTable from "../../components/visitsTable"
 import { useContext } from "react"
 import { VisitContext } from "../../context"
-import CancelModal from "../../components/cancel-modal"
 
 function Home() {
-  const {nav, dialogRef} = useContext(VisitContext)
+  const {nav} = useContext(VisitContext)
   
   return (
     <div className={style.relative}>
@@ -26,9 +25,7 @@ function Home() {
             </div>
           </div>
           <VisitsTable/>
-          <Button onclick = {() => dialogRef.current.showModal()}/>
           </div>
-          <CancelModal/>
         </MainCard>
       </div>
       </div>

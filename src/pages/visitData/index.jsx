@@ -5,12 +5,12 @@ import { useContext, useEffect, useState } from "react"
 import { VisitContext } from "../../context"
 import MainCard from "../../components/main-card"
 import style from "./VisitData.module.css"
-import CancelModal from "../../components/cancel-modal"
+
 
 
 function VisitData() {
   const params = useParams();
-  const { visitInfo, setVisitInfo, nav, cancelRef, setIndex, dialogRef } = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, nav, cancelRef, setIndex } = useContext(VisitContext)
   const [thisVisit, setThisVisit] = useState({
     name: "",
     date: "",
@@ -80,7 +80,6 @@ function VisitData() {
       </form>
       {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelRef.current.showModal()} title="Cancelar visita"/> </div> : "" }
         </div>
-        <CancelModal/>
       </MainCard>
     </div>
   
