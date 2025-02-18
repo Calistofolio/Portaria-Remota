@@ -1,0 +1,29 @@
+.cancelModal{
+    border: none;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 20px 16px;
+    width: 400px;
+    margin: auto;
+}
+.cancelModal *{
+    margin: 5px;
+}
+.button{
+    width: 100%;
+    border-top: solid 2px var(--gray-300);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+.cancelButton *{
+    background-color: var(--red-700);
+    color: white;
+    float: right;
+    width: 258px;
+}
+.modalTitle{
+    color: var(--cool-gray-500);
+}

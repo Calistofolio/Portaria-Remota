@@ -70,15 +70,15 @@ function VisitData() {
         <Input label="Observação (Opcional)" place="Digite a observação" onchange={(e) => handleInputChange("obs", e.target.value)} inputValue={thisVisit.obs} inputType = "text"/>
       
       <div className={style.button}>
-        <div>
+      {params.id != "setVisit" ? <span className={style.red}> <Button bType="button" onclick={() => cancelRef.current.showModal()} title="Cancelar visita"/> </span> : "" }
+        <span>
           <Button bType="button" onclick={() => nav()} title="Voltar"/>
-          </div>
-          <div className={style.save}>
+          </span>
+          <span className={style.save}>
             <Button bType = "submit" title="Salvar"/>
-          </div>
+          </span>
         </div>
       </form>
-      {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelRef.current.showModal()} title="Cancelar visita"/> </div> : "" }
         </div>
       </MainCard>
     </div>
