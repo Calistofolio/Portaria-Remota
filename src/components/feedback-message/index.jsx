@@ -4,12 +4,12 @@ import { VisitContext } from "../../context"
 
 function FeedbackMessage() {
 
-    const {dialogRef} = useContext(VisitContext)
+    const {dialogRef, modalAction} = useContext(VisitContext)
 
     return (
        
             <dialog ref={dialogRef} className={style.feedback}>
-                <p>Visita adicionada com sucesso!</p>
+                <p>Visita {modalAction} com sucesso!</p>
                 <button id="closeModal" onClick={() => dialogRef.current.close()}>X</button>
             </dialog>
     )

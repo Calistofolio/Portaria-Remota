@@ -9,6 +9,7 @@ function VisitProvider({children}){
     const cancelRef = useRef()
     const [visitInfo, setVisitInfo] = useState([])
     const [index, setIndex] = useState()
+    const [modalAction, setModalAction] = useState()
     
     function cancelVisit(){
         visitInfo.map((p, i) => i == index ? p.status = false : p.status = p.status)
@@ -21,7 +22,7 @@ function VisitProvider({children}){
       }
 
     return(
-        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav, dialogRef, cancelRef, index, setIndex }}>
+        <VisitContext.Provider value={{ visitInfo, setVisitInfo, cancelVisit, nav, dialogRef, cancelRef, index, setIndex, modalAction, setModalAction }}>
             {children}
         </VisitContext.Provider>
     )
