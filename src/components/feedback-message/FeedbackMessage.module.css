@@ -8,4 +8,8 @@
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
+    margin: 0 auto;
+    top: 85%;
+    width: 600px;
+    pointer-events: all;
 }

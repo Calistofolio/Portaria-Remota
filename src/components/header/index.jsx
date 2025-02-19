@@ -20,7 +20,7 @@ function Header() {
                         <div className={style.name}>
                             Roberto
                         </div>
-                        <img src={Avatar}alt="" />
+                        <img className={style.userPic} src={Avatar}alt="User avatar" />
                         <Button title="Sair"/>
                     </div>
                 </div>

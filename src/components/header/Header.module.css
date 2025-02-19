@@ -15,6 +15,10 @@
     position: absolute;
     width: 100%;
 }
+.userPic{
+    width: 32px;
+    height: 32px;
+}
 
 .name{
     padding:  10px 5px;

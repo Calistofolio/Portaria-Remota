@@ -7,17 +7,18 @@ import { VisitContext } from "../../context"
 import CancelModal from "../cancel-modal"
 
 function Layout() {
-    const { visitInfo, dialogRef, setModalAction } = useContext(VisitContext)
+    const { visitInfo, dialogRef, setModalAction, afterFirstRender } = useContext(VisitContext)
 
-    useEffect(() =>{
+    afterFirstRender(() =>{
         setModalAction("removida")
         dialogRef.current.showModal()
       },[...visitInfo.map(item => item.status)])
 
-      useEffect(() =>{
+      afterFirstRender(() =>{
         setModalAction("adicionada")
         dialogRef.current.showModal()
       },[visitInfo])
+      
 
     return (
         <div>
