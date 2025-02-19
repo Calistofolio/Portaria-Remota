@@ -10,7 +10,7 @@ import style from "./VisitData.module.css"
 
 function VisitData() {
   const params = useParams();
-  const { visitInfo, setVisitInfo, nav, cancelRef, setIndex } = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, addVisitFeedback, nav, cancelRef, setIndex } = useContext(VisitContext)
   const [thisVisit, setThisVisit] = useState({
     name: "",
     date: "",
@@ -40,12 +40,15 @@ function VisitData() {
     
     if (visitInfo == null) {
       setVisitInfo(thisVisit)
+      addVisitFeedback()
       nav()
     } else if(params.id != "setVisit"){
       setVisitInfo(visitInfo.map((visit, i) => i == params.id ? thisVisit : visit));
+      addVisitFeedback()
       nav()
     } else{
       setVisitInfo([...visitInfo, thisVisit])
+      addVisitFeedback()
       nav()
     }
   }

@@ -11,23 +11,18 @@ function VisitProvider({children}){
     const [index, setIndex] = useState()
     const [modalAction, setModalAction] = useState()
 
-    const afterFirstRender = (callback, dependence) =>{
-      const firstRender = useRef(true);
-      useEffect(() =>{
-        if(!firstRender){
-          callback();
-        }
-      }, dependence)
 
-      useEffect(() =>{
-        firstRender.current = false
-      },[])
-    };
+    function addVisitFeedback(){
+      setModalAction("adicionada")
+      dialogRef.current.showModal()
+    }
     
     function cancelVisit(){
         visitInfo.map((p, i) => i == index ? p.status = false : p.status = p.status)
         cancelRef.current.close()
         navigate("/")
+        setModalAction("removida")
+        dialogRef.current.showModal()
       }
 
       function nav(path){
@@ -35,7 +30,7 @@ function VisitProvider({children}){
       }
 
     return(
-        <VisitContext.Provider value={{ visitInfo, setVisitInfo, afterFirstRender, cancelVisit, nav, dialogRef, cancelRef, index, setIndex, modalAction, setModalAction }}>
+        <VisitContext.Provider value={{ addVisitFeedback, visitInfo, setVisitInfo, cancelVisit, nav, dialogRef, cancelRef, index, setIndex, modalAction }}>
             {children}
         </VisitContext.Provider>
     )
