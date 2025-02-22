@@ -35,10 +35,13 @@ function VisitData() {
 
   function handleClick(e){
     e.preventDefault();
-    console.log(thisVisit)
     const thisDate = new Date()
+    const date = (thisVisit.date + "T" + thisVisit.hour + ":00") 
+    const visitDate = new Date(date)
     
-    if (visitInfo == null) {
+    if(thisDate.getTime() > visitDate.getTime()){
+      console.log("nhao")
+    } else if (visitInfo == null) {
       setVisitInfo(thisVisit)
       addVisitFeedback()
       nav()
