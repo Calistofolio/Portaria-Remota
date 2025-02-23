@@ -1,8 +1,19 @@
-# React + Vite
+# Portaria Remota Summer Academy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project made for Accenture's Summer Academy. 
 
-Currently, two official plugins are available:
+This project was made with React and Javascript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The idea behind the project was coding a remote entrance hall, allowing the user to add visits with some informations, like: 
+
+- Name;
+- Date of the visit;
+- Hour of the visit;
+- Document type;
+- Document number;
+- Optional remark.
+
+The project has two pages: 
+
+- Home: Where the visits are stored with visit name, date, hour, status, edit button and cancel button;
+- Visit Data: Where the user can register or edit the visit informations or cancel the visit.
