@@ -26,8 +26,9 @@ form{
 }
 
 .button{
-    flex-direction: row;
-    display: flex;
+    padding: 10px;
+    width: 100%;
+    
 }
 .button *{
     padding: 10px 20px;
@@ -40,8 +41,13 @@ form{
 .red *{
     background-color: var(--red-700);
     color: white;
+    float: left;
 }
 
 .content{
     padding: 20px;
+}
+
+.standardButtons{
+    float: right;
 }

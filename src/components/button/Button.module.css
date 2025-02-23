@@ -2,11 +2,13 @@
     background-color: white;
     border: solid 1px var(--gray-200);
     color: var(--gray-800);
-    padding: 8px 12px;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
     text-decoration: none;
 }

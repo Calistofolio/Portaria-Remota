@@ -1,85 +1,92 @@
 import Input from "../../components/input"
 import Button from "../../components/button"
-import { NavLink, useNavigate, useParams } from "react-router"
-import { useContext } from "react"
-import { VisitContext } from "../../context/visitContext"
+import { useParams } from "react-router"
+import { useContext, useEffect, useState } from "react"
+import { VisitContext } from "../../context"
 import MainCard from "../../components/main-card"
 import style from "./VisitData.module.css"
 
 
+
 function VisitData() {
-  const { visitInfo, setVisitInfo } = useContext(VisitContext)
   const params = useParams();
-  const navigate = useNavigate();
-  
+  const { visitInfo, setVisitInfo, addVisitFeedback, nav, cancelRef, setSuccess, setIndex, failureFeedBack } = useContext(VisitContext)
+  const [thisVisit, setThisVisit] = useState({
+    name: "",
+    date: "",
+    hour: "",
+    docType: "",
+    docNum: "",
+    status: true,
+    obs: "",
+  })
+
+  useEffect(() => {
+    setIndex(params.id)
+    if(params.id != "setVisit"){
+      setThisVisit(visitInfo[params.id])
+    }
+  },[])
+
+
+  function handleInputChange(propName, propValue) {
+    setThisVisit({ ...thisVisit, [propName]: propValue });
+  }
 
   function handleClick(e){
     e.preventDefault();
-    const name = document.getElementById("name")
-    const date = document.getElementById("date")
-    const hour = document.getElementById("hour")
-    const docType = document.getElementById("docType")
-    const docNum = document.getElementById("docNum")
-    const obs = document.getElementById("obs")
-    const status = true
     const thisDate = new Date()
+    const date = (thisVisit.date + "T" + thisVisit.hour + ":00") 
+    const visitDate = new Date(date)
     
-    
-    if (visitInfo == null) {
-      setVisitInfo({name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value})
-    } else if(thisDate > date.valueAsDate.getTime()){
-      console.log("Não é possivel definir uma visita e")
+    if(thisDate.getTime() > visitDate.getTime()){
+      failureFeedBack();
+    } else if (visitInfo == null) {
+      setVisitInfo(thisVisit);
+      addVisitFeedback();
+      nav();
     } else if(params.id != "setVisit"){
-      setVisitInfo(visit => visit.map((visit, i) => i == params.id ? {name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value, obs: obs.value, status: status} : visit));
-      navigate("/")
-     
+      setVisitInfo(visitInfo.map((visit, i) => i == params.id ? thisVisit : visit));
+      addVisitFeedback();
+      nav();
     } else{
-      setVisitInfo([...visitInfo, {name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value, obs: obs.value, status: status}])
-      navigate("/")
+      setVisitInfo([...visitInfo, thisVisit]);
+      addVisitFeedback();
+      nav();
     }
-  }
-
-  function cancelVisit(){
-    const name = document.getElementById("name")
-    const date = document.getElementById("date")
-    const hour = document.getElementById("hour")
-    const docType = document.getElementById("docType")
-    const docNum = document.getElementById("docNum")
-    const obs = document.getElementById("obs")
-    const status = false
-    setVisitInfo(visit => visit.map((visit, i) => i == params.id ? {name: name.value, date: date.value, hour: hour.value, docType: docType.value, docNum: docNum.value, obs: obs.value, status: status} : visit));
-    navigate("/")
   }
 
   return (
     
     <div className={style.position}>
-       <NavLink to="/">
-        <Button title="Voltar"/>
-      </NavLink>
+      <div>
+        <Button onclick={() => nav()} title="Voltar"/>
+        </div>
       <MainCard>
         <div className={style.content}>
       <div className={style.title}>
         {params.id == "setVisit" ? <h2>Adicionar visita</h2> : <h2>Editar visita</h2> }
     </div>
       <form onSubmit={handleClick}>
-        <Input label="Nome do visitante" place="Digite o nome do visitante" req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].name} : {value : null})} inputType = "text" iId="name"/>
-        <Input label="Data" place="Selecione a data" req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].date} : {value : null})} inputType = "date" iId="date"/>
-        <Input label="Hora" place="Digite a hora" req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].hour} : {value : null})} inputType = "time" iId="hour"/>
-        <Input label="Tipo de documento" place="Digite o tipo de documento" req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].docType} : {value : null})} inputType = "text"  iId="docType"/>
-        <Input label="Número do documento" place="Digite o número do documento" req={true} {...(params.id != "setVisit" ? {value: visitInfo[params.id].docNum} : {value : null})} inputType = "number" iId="docNum"/>
-        <Input label="Observação (Opcional)" place="Digite a observação"  {...(params.id != "setVisit" ? {value: visitInfo[params.id].obs} : {value : null})} inputType = "text" iId="obs"/>
+        <Input label="Nome do visitante" onchange={(e) => handleInputChange("name", e.target.value)} inputValue={thisVisit.name} place="Digite o nome do visitante" req={true}  inputType = "text" />
+        <Input label="Data" place="Selecione a data" onchange={(e) => handleInputChange("date", e.target.value)} inputValue={thisVisit.date} req={true} inputType = "date" iId="date"/>
+        <Input label="Hora" place="Digite a hora" onchange={(e) => handleInputChange("hour", e.target.value)} inputValue={thisVisit.hour} req={true} inputType = "time" iId="hour"/>
+        <Input label="Tipo de documento" place="Digite o tipo de documento" onchange={(e) => handleInputChange("docType", e.target.value)} inputValue={thisVisit.docType} req={true} inputType = "text" />
+        <Input label="Número do documento" place="Digite o número do documento" onchange={(e) => handleInputChange("docNum", e.target.value)} inputValue={thisVisit.docNum} req={true} inputType = "number"/>
+        <Input label="Observação (Opcional)" place="Digite a observação" onchange={(e) => handleInputChange("obs", e.target.value)} inputValue={thisVisit.obs} inputType = "text"/>
       
       <div className={style.button}>
-        <NavLink to="/">
-          <Button title="Voltar"/>
-        </NavLink>
-          <div className={style.save}>
-            <Button  bType = "submit" title="Salvar"/>
-          </div>
+      {params.id != "setVisit" ? <span className={style.red}> <Button bType="button" onclick={() => cancelRef.current.showModal()} title="Cancelar visita"/> </span> : "" }
+        <span className={style.standardButtons}>
+          <span>
+              <Button bType="button" onclick={() => nav()} title="Voltar"/>
+            </span>
+            <span className={style.save}>
+              <Button bType = "submit" title="Salvar"/>
+            </span>
+          </span>
         </div>
       </form>
-      {params.id != "setVisit" ? <div className={style.red}> <Button onclick={() => cancelVisit()} title="Cancelar visita"/> </div> : "" }
         </div>
       </MainCard>
     </div>

@@ -1,4 +1,3 @@
-import { Outlet } from "react-router"
 import Logo from "../../assets/logo.png"
 import Avatar from "../../assets/Avatar.png"
 import Button from "../button"
@@ -21,13 +20,12 @@ function Header() {
                         <div className={style.name}>
                             Roberto
                         </div>
-                        <img src={Avatar}alt="" />
+                        <img className={style.userPic} src={Avatar}alt="User avatar" />
                         <Button title="Sair"/>
                     </div>
                 </div>
             </div>
             <img src={Family} className={style.family}  alt="" />
-            <Outlet/>
         </div>
     )
   }
