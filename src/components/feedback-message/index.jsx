@@ -4,14 +4,23 @@ import { VisitContext } from "../../context"
 
 function FeedbackMessage() {
 
-    const {dialogRef, modalAction} = useContext(VisitContext)
+    const {dialogRef, modalAction, success} = useContext(VisitContext)
 
     return (
-       
-            <dialog ref={dialogRef} className={style.feedback}>
-                <p>Visita {modalAction} com sucesso!</p>
-                <button id="closeModal" onClick={() => dialogRef.current.close()}>X</button>
-            </dialog>
+        <div>
+            {success ? (
+                <dialog ref={dialogRef} className={style.success}>
+                    <p>Visita {modalAction} com sucesso!</p>
+                    <button id="closeModal" onClick={() => dialogRef.current.close()}>X</button>
+                </dialog>
+            ) : (
+                <dialog ref={dialogRef} className={style.failure}>
+                    <p>Não foi possivel adicionar a visita</p>
+                    <button id="closeModal" onClick={() => dialogRef.current.close()}>X</button>
+                </dialog>
+            )
+            }
+        </div>
     )
   }
   

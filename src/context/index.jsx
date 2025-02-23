@@ -10,10 +10,16 @@ function VisitProvider({children}){
     const [visitInfo, setVisitInfo] = useState([])
     const [index, setIndex] = useState()
     const [modalAction, setModalAction] = useState()
+    const [success, setSuccess] = useState()
 
+    function failureFeedBack(){
+      setSuccess(false)
+      dialogRef.current.showModal()
+    }
 
     function addVisitFeedback(){
       setModalAction("adicionada")
+      setSuccess(true)
       dialogRef.current.showModal()
     }
     
@@ -22,6 +28,7 @@ function VisitProvider({children}){
         cancelRef.current.close()
         navigate("/")
         setModalAction("removida")
+        setSuccess(true)
         dialogRef.current.showModal()
       }
 
@@ -30,7 +37,7 @@ function VisitProvider({children}){
       }
 
     return(
-        <VisitContext.Provider value={{ addVisitFeedback, visitInfo, setVisitInfo, cancelVisit, nav, dialogRef, cancelRef, index, setIndex, modalAction }}>
+        <VisitContext.Provider value={{ addVisitFeedback, visitInfo, setVisitInfo, cancelVisit, nav, dialogRef, cancelRef, index, setIndex, modalAction, success, failureFeedBack }}>
             {children}
         </VisitContext.Provider>
     )

@@ -10,7 +10,7 @@ import style from "./VisitData.module.css"
 
 function VisitData() {
   const params = useParams();
-  const { visitInfo, setVisitInfo, addVisitFeedback, nav, cancelRef, setIndex } = useContext(VisitContext)
+  const { visitInfo, setVisitInfo, addVisitFeedback, nav, cancelRef, setSuccess, setIndex, failureFeedBack } = useContext(VisitContext)
   const [thisVisit, setThisVisit] = useState({
     name: "",
     date: "",
@@ -40,19 +40,19 @@ function VisitData() {
     const visitDate = new Date(date)
     
     if(thisDate.getTime() > visitDate.getTime()){
-      console.log("nhao")
+      failureFeedBack();
     } else if (visitInfo == null) {
-      setVisitInfo(thisVisit)
-      addVisitFeedback()
-      nav()
+      setVisitInfo(thisVisit);
+      addVisitFeedback();
+      nav();
     } else if(params.id != "setVisit"){
       setVisitInfo(visitInfo.map((visit, i) => i == params.id ? thisVisit : visit));
-      addVisitFeedback()
-      nav()
+      addVisitFeedback();
+      nav();
     } else{
-      setVisitInfo([...visitInfo, thisVisit])
-      addVisitFeedback()
-      nav()
+      setVisitInfo([...visitInfo, thisVisit]);
+      addVisitFeedback();
+      nav();
     }
   }
 

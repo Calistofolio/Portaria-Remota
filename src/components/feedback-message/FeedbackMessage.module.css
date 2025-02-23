@@ -1,4 +1,4 @@
-.feedback{
+.success{
     background-color: var(--green-600);
     padding: 21px 16px;
     color: white;
@@ -11,5 +11,19 @@
     margin: 0 auto;
     top: 85%;
     width: 600px;
-    pointer-events: all;
+}
+
+.failure{
+    background-color: var(--red-700);
+    padding: 21px 16px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    margin: 0 auto;
+    top: 85%;
+    width: 600px;
 }
