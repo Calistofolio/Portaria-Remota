@@ -77,11 +77,13 @@ function VisitData() {
       
       <div className={style.button}>
       {params.id != "setVisit" ? <span className={style.red}> <Button bType="button" onclick={() => cancelRef.current.showModal()} title="Cancelar visita"/> </span> : "" }
-        <span>
-          <Button bType="button" onclick={() => nav()} title="Voltar"/>
-          </span>
-          <span className={style.save}>
-            <Button bType = "submit" title="Salvar"/>
+        <span className={style.standardButtons}>
+          <span>
+              <Button bType="button" onclick={() => nav()} title="Voltar"/>
+            </span>
+            <span className={style.save}>
+              <Button bType = "submit" title="Salvar"/>
+            </span>
           </span>
         </div>
       </form>

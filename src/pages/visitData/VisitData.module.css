@@ -47,3 +47,7 @@ form{
 .content{
     padding: 20px;
 }
+
+.standardButtons{
+    float: right;
+}
